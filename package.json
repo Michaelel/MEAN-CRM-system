@@ -1,0 +1,33 @@
+{
+  "name": "mean-crm-system",
+  "version": "1.0.0",
+  "description": "fulstack app with angular and express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michaelel/MEAN-CRM-system.git"
+  },
+  "keywords": [
+    "express",
+    "angular"
+  ],
+  "author": "Michael Eliseyev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michaelel/MEAN-CRM-system/issues"
+  },
+  "homepage": "https://github.com/Michaelel/MEAN-CRM-system#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
