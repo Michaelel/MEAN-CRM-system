@@ -10,7 +10,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import { RegisterPageComponent } from './register-page/register-page.component'
-import { TokenIntercepter } from './shared/classes/token.intercepter'
+import { TokenInterceptor } from './shared/classes/token.interceptor';
+import { OverviewPageComponent } from './overview-page/overview-page.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TokenIntercepter } from './shared/classes/token.intercepter'
     LoginPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    OverviewPageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { TokenIntercepter } from './shared/classes/token.intercepter'
     {
     provide: HTTP_INTERCEPTORS,
     multi: true,
-    useClass: TokenIntercepter
+    useClass: TokenInterceptor
   }
   ],
   bootstrap: [AppComponent]
