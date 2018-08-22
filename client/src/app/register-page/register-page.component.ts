@@ -2,42 +2,33 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../shared/services/auth.service'
 import { Subscription } from 'rxjs/internal/Subscription'
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { Router } from '@angular/router'
 import { MeterialService } from '../shared/classes/meterial.service'
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  selector: 'app-register-page',
+  templateUrl: './register-page.component.html',
+  styleUrls: ['./register-page.component.css']
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
+export class RegisterPageComponent implements OnInit, OnDestroy {
   
   form: FormGroup
   aSub: Subscription
-
-  constructor(private auth: AuthService,
-              private router: Router,
-              private route: ActivatedRoute) {
   
+  constructor(private auth: AuthService,
+              private router: Router) {
+    
   }
-
+  
   ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
-    
-    this.route.queryParams.subscribe((params: Params) => {
-      if(params.registered) {
-        MeterialService.toast('Now you can log in using your data')
-      } else if(params.accessDenied) {
-        MeterialService.toast('Firstly log in')
-      }
-    })
   }
   
   ngOnDestroy() {
-    if(this.aSub) {
+    if (this.aSub) {
       this.aSub.unsubscribe()
     }
   }
@@ -45,13 +36,18 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.form.disable()
     
-    this.aSub = this.auth.login(this.form.value).subscribe(
-      () => this.router.navigate(['/overview']),
+    this.aSub = this.auth.register(this.form.value).subscribe(
+      () => this.router.navigate(['/login'], {
+        queryParams: {
+          registered: true
+        }
+      }),
       e => {
         MeterialService.toast(e.error.message)
         this.form.enable()
       }
     )
   }
-
+  
 }
+
