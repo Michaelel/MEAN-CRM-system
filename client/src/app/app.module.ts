@@ -16,7 +16,8 @@ import { AnalyticsPageComponent } from './analytics-page/analytics-page.componen
 import { HistoryPageComponent } from './history-page/history-page.component'
 import { OrderPageComponent } from './order-page/order-page.component'
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
-import { LoaderComponent } from './shared/components/loader/loader.component'
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoaderComponent } from './shared/components/loader/loader.component'
     HistoryPageComponent,
     OrderPageComponent,
     CategoriesPageComponent,
-    LoaderComponent
+    LoaderComponent,
+    CategoriesFormComponent
   ],
   imports: [
     BrowserModule,
