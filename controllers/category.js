@@ -52,7 +52,7 @@ module.exports.update = async (req, res) => {
     updated.imageSrc = req.file.path
   }
 
-  const category = Category.findOneAndUpdate(
+  const category = await Category.findOneAndUpdate(
     { _id: req.params.id },
     { $set: updated },
     { new: true },
